@@ -1,0 +1,51 @@
+# https://taskfile.dev
+version: '3'
+tasks:
+  run:
+    desc: run server
+    cmds:
+      - go run main.go
+
+  greet:
+    desc: greet
+    cmds:
+      - curl -X GET "http://localhost:1323/greet/eth"
+
+  deploy:
+    desc: deploy a contract to local blockchain network
+    cmds:
+      - go run deploy/deploy.go -v
+
+  build:
+    desc: build go file from abi and bin
+    cmds:
+    - |
+      solc --optimize --abi ./contracts/hello.sol -o build --overwrite
+      solc --optimize --bin ./contracts/hello.sol -o build --overwrite
+      abigen --abi=./build/HelloContract.abi --bin=./build/HelloContract.bin --pkg=api --out=./api/hello.go
+
+  ## Set env
+  # or app https://www.trufflesuite.com/ganache
+  install-ganache-cli:
+    desc: install ganache-cli as https://github.com/trufflesuite/ganache-cli#installation
+    cmds:
+      - npm install -g ganache-cli
+      - ganache-cli --version
+
+  install-geth:
+    desc: install geth as https://geth.ethereum.org/docs/install-and-build/installing-geth
+    cmds:
+    - |
+      # brew tap ethereum/ethereum
+      brew install ethereum
+      geth version
+  
+  install-solidity:
+    desc: install solidity compiler https://docs.soliditylang.org/en/v0.8.2/installing-solidity.html#macos-packages
+    cmds:
+    - |
+      # brew update
+      # brew upgrade
+      brew tap ethereum/ethereum
+      brew install solidity
+      solc --version
