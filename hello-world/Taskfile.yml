@@ -1,0 +1,27 @@
+# https://taskfile.dev
+version: '3'
+tasks:
+  
+  try:
+    cmds:
+      - node scripts/contract-interact.js
+
+  compile:
+    cmds:
+      - npx hardhat compile
+  
+  deploy:
+    cmds:
+      - npx hardhat run scripts/deploy.js --network ropsten
+
+  setup:
+    cmds:
+    - npm init
+    - npm install dotenv --save
+    - npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0"
+    - npm install @alch/alchemy-web3
+
+  install-hardhat:
+    cmds:
+    - npm install --save-dev hardhat
+    # npx hardhat 
