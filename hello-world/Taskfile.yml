@@ -14,12 +14,21 @@ tasks:
     cmds:
       - npx hardhat run scripts/deploy.js --network ropsten
 
+  verify:
+    cmds:
+      #- npx hardhat verify --network ropsten DEPLOYED_CONTRACT_ADDRESS 'Hello World!'
+      - npx hardhat verify --network ropsten 0x01b8280A556E9DC57087918B9B3D6DeDAf970225 'Hello World!'
+
   setup:
     cmds:
     - npm init
     - npm install dotenv --save
     - npm install --save-dev @nomiclabs/hardhat-ethers "ethers@^5.0.0"
     - npm install @alch/alchemy-web3
+
+  install-hardhat-etherscan:
+    cmds:
+      - npm install --save-dev @nomiclabs/hardhat-etherscan
 
   install-hardhat:
     cmds:

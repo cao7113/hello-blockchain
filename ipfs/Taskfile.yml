@@ -1,0 +1,21 @@
+# https://taskfile.dev
+version: '3'
+tasks:
+  
+  init-ipfs:
+    cmds:
+    - ipfs init
+
+  install-go-impl:
+    # https://docs.ipfs.io/install/command-line/#official-distributions
+    cmds:
+    - |
+      wget https://dist.ipfs.io/go-ipfs/v0.9.1/go-ipfs_v0.9.1_darwin-amd64.tar.gz
+      tar -xvzf go-ipfs_v0.9.1_darwin-amd64.tar.gz
+      cd go-ipfs
+      bash install.sh 
+      ipfs --version
+
+  install-desktop-app:
+    cmds:
+    - brew install ipfs --cask
