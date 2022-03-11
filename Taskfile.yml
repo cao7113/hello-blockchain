@@ -31,14 +31,6 @@ tasks:
     cmds:
       - npm install -g ganache-cli
       - ganache-cli --version
-
-  install-geth:
-    desc: install geth as https://geth.ethereum.org/docs/install-and-build/installing-geth
-    cmds:
-    - |
-      # brew tap ethereum/ethereum
-      brew install ethereum
-      geth version
   
   install-solidity:
     desc: install solidity compiler https://docs.soliditylang.org/en/v0.8.2/installing-solidity.html#macos-packages
