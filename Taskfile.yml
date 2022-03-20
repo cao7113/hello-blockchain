@@ -41,3 +41,5 @@ tasks:
         brew tap ethereum/ethereum
         brew install solidity
         solc --version
+
+  open-remix: open https://remix.ethereum.org/
